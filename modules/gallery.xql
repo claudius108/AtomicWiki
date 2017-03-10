@@ -446,7 +446,7 @@ declare %private function gallery:feed-to-html-image($feedId as xs:string, $imag
 declare 
     %templates:wrap
     function gallery:search($node as node(), $model as map(*), $filterCollection as xs:string?, $query as xs:string?, $cached as item()*) {
-        system:as-user("admin", "",
+        system:as-user("admin", $config:admin-pass,
             if ($query or $cached) then
                 let $result := 
                     if ($query and $filterCollection and not($filterCollection eq "all")) then

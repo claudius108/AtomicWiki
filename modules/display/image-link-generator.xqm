@@ -41,7 +41,7 @@ declare function image-link-generator:generate-href($image-uuid, $uri-name) {
 declare function image-link-generator:get-resource($id) {
     (: Do search as dba :)
     let $resource := 
-        system:as-user("admin", "", collection($config:data)//(mods:mods[@ID eq $id][1] | vra:vra/vra:work[@id eq $id][1] | vra:vra/vra:image[@id eq $id][1]))
+        system:as-user("admin", $config:admin-pass, collection($config:data)//(mods:mods[@ID eq $id][1] | vra:vra/vra:work[@id eq $id][1] | vra:vra/vra:image[@id eq $id][1]))
     return
         if ($resource) then
             let $resource-path := util:collection-name($resource)

@@ -9,7 +9,7 @@ import module namespace config="http://exist-db.org/mods/config" at "../config.x
 let $image-uuid := request:get-parameter("uuid", "")
 let $uri-name := request:get-parameter("size", "tamboti-full")
 
-let $image-vra := system:as-user("admin", "", collection($config:mods-root)//vra:image[@id=$image-uuid][1])
+let $image-vra := system:as-user("admin", $config:admin-pass, collection($config:mods-root)//vra:image[@id=$image-uuid][1])
 
 let $image-href := image-link-generator:generate-href($image-uuid, $uri-name)
 let $image-filename := functx:substring-after-last($image-vra//vra:image/@href/string(), "/")

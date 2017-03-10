@@ -18,6 +18,7 @@ declare variable $config:default-user := ("editor", "editor");
 declare variable $config:default-group := "biblio.users";
 declare variable $config:users-group := "wiki.users";
 declare variable $config:admin-group := "wiki-admin";
+declare variable $config:admin-pass := "Wars4Spass2$s";
 
 (: 
     Determine the application root collection from the current module load path.
