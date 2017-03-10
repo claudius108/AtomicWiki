@@ -20,7 +20,9 @@ declare variable $gallery:IMAGE_BIG := "&amp;width=1024";
 declare variable $gallery:IMAGE_THUMB_LARGE := "&amp;width=256&amp;height=256&amp;crop_type=middle";
 
 declare function gallery:show-catalog($node as node(), $model as map(*)) {
+    system:as-user("admin", $config:admin-pass,
     let $gallery-id := $node/@id
+    
     return 
         if (empty($gallery-id)) then
             ()
@@ -108,8 +110,8 @@ declare function gallery:show-catalog($node as node(), $model as map(*)) {
                 </div>
                 }
             </div>
-        return
-           $div
+        return $div
+    )
 };
 
 declare function gallery:select-gallery($node as node(), $model as map(*)) {
